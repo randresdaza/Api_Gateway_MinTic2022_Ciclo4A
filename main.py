@@ -180,7 +180,7 @@ def eliminarPermiso(id):
     json = response.json()
     return jsonify(json)
 ####################################### PERMISOS ROLES ############################################
-@app.route("/permisos-roles/rol/<string:id>/permiso/<string:id>",methods=['POST'])
+@app.route("/permisos-roles/rol/<string:id_rol>/permiso/<string:id_permiso>",methods=['POST'])
 def crearPermisoRol(id_rol, id_permiso):
     data = request.get_json()
     headers = {"Content-Type": "application/json; charset=utf-8"}
@@ -196,14 +196,14 @@ def getPermisosRoles():
     json = response.json()
     return jsonify(json)
 @app.route("/permisos-roles/<string:id>",methods=['GET'])
-def getPermiso(id):
+def getPermisoRol(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-security"] + '/permisos-roles/' + id
     response = requests.get(url, headers=headers)
     json = response.json()
     return jsonify(json)
-@app.route("/permisos-roles/rol/<string:id>/permiso/<string:id>",methods=['PUT'])
-def modificarPermiso(id_rol, id_permiso):
+@app.route("/permisos-roles/rol/<string:id_rol>/permiso/<string:id_permiso>",methods=['PUT'])
+def modificarPermisoRol(id_rol, id_permiso):
     data = request.get_json()
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-security"] + '/permisos-roles/rol/' + id_rol + '/permiso/' + id_permiso
@@ -211,7 +211,7 @@ def modificarPermiso(id_rol, id_permiso):
     json = response.json()
     return jsonify(json)
 @app.route("/permisos-roles/<string:id>",methods=['DELETE'])
-def eliminarPermiso(id):
+def eliminarPermisoRol(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-security"] + '/permisos-roles/' + id
     response = requests.delete(url, headers=headers)
@@ -398,7 +398,6 @@ def test():
     json = {}
     json["message"]="Server running ..."
     return jsonify(json)
-
 def loadFileConfig():
     with open('config.json') as f:
         data = json.load(f)
