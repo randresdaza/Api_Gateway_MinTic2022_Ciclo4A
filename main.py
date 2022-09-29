@@ -101,8 +101,12 @@ def eliminarUsuario(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-security"] + '/usuarios/' + id
     response = requests.delete(url, headers=headers)
-    json = response.json()
-    return jsonify(json)
+    if response.status_code == 200:
+        return jsonify({"message": "Usuario " +id+ " eliminado correctamente."}), 200
+    else:
+        return jsonify({"message": "Usuario " +id+ " no existe."}), 401
+    #json = response.json()
+    #return jsonify(json)
 ####################################### ROLES ############################################
 @app.route("/roles",methods=['POST'])
 def crearRol():
@@ -139,8 +143,12 @@ def eliminarRol(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-security"] + '/roles/' + id
     response = requests.delete(url, headers=headers)
-    json = response.json()
-    return jsonify(json)
+    if response.status_code == 200:
+        return jsonify({"message": "Rol " +id+ " eliminado correctamente."}), 200
+    else:
+        return jsonify({"message": "Rol " +id+ " no existe."}), 401
+    #json = response.json()
+    #return jsonify(json)
 ####################################### PERMISOS ############################################
 @app.route("/permisos",methods=['POST'])
 def crearPermiso():
@@ -177,8 +185,12 @@ def eliminarPermiso(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-security"] + '/permisos/' + id
     response = requests.delete(url, headers=headers)
-    json = response.json()
-    return jsonify(json)
+    if response.status_code == 200:
+        return jsonify({"message": "Permiso " +id+ " eliminado correctamente."}), 200
+    else:
+        return jsonify({"message": "Permiso " +id+ " no existe."}), 401
+    #json = response.json()
+    #return jsonify(json)
 ####################################### PERMISOS ROLES ############################################
 @app.route("/permisos-roles/rol/<string:id_rol>/permiso/<string:id_permiso>",methods=['POST'])
 def crearPermisoRol(id_rol, id_permiso):
@@ -215,8 +227,12 @@ def eliminarPermisoRol(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-security"] + '/permisos-roles/' + id
     response = requests.delete(url, headers=headers)
-    json = response.json()
-    return jsonify(json)
+    if response.status_code == 200:
+        return jsonify({"message": "PermisoRol " +id+ " eliminado correctamente."}), 200
+    else:
+        return jsonify({"message": "PermisoRol " +id+ " no existe."}), 401
+    #json = response.json()
+    #return jsonify(json)
 ###################################### PARTIDOS ########################################
 @app.route("/partido",methods=['POST'])
 def crearPartidos():
@@ -253,8 +269,12 @@ def eliminarPartido(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-results"] + '/partido/' + id
     response = requests.delete(url, headers=headers)
-    json = response.json()
-    return jsonify(json)
+    if response.status_code == 200:
+        return jsonify({"message": "Partido " +id+ " eliminado correctamente."}), 200
+    else:
+        return jsonify({"message": "Partido " +id+ " no existe."}), 401
+    #json = response.json()
+    #return jsonify(json)
 ######################################## MESAS ########################################
 @app.route("/mesa",methods=['POST'])
 def crearMesas():
@@ -291,8 +311,12 @@ def eliminarMesa(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-results"] + '/mesa/' + id
     response = requests.delete(url, headers=headers)
-    json = response.json()
-    return jsonify(json)
+    if response.status_code == 200:
+        return jsonify({"message": "Mesa " +id+ " eliminado correctamente."}), 200
+    else:
+        return jsonify({"message": "Mesa " +id+ " no existe."}), 401
+    #json = response.json()
+    #return jsonify(json)
 ##################################### CANDIDATOS #########################################
 @app.route("/candidato",methods=['POST'])
 def crearCandidato():
@@ -329,8 +353,12 @@ def eliminarCandidato(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
     url = dataConfig["url-backend-results"] + '/candidato/' + id
     response = requests.delete(url, headers=headers)
-    json = response.json()
-    return jsonify(json)
+    if response.status_code == 200:
+        return jsonify({"message": "Candidato " +id+ " eliminado correctamente."}), 200
+    else:
+        return jsonify({"message": "Candidato " +id+ " no existe."}), 401
+    #json = response.json()
+    #return jsonify(json)
 ##################################### RESULTADOS ############################################
 @app.route("/resultado",methods=['POST'])
 def crearResultado():
